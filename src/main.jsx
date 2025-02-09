@@ -10,7 +10,7 @@ import AddPost from "./pages/AddPost.jsx"
 import Home from './pages/Home.jsx'
 import Login from './pages/Login.jsx'
 import Signup from './pages/Signup.jsx'
-
+import Post from './pages/Post.jsx'
 import AllPosts from "./pages/AllPosts.jsx"
 import EditPost from "./pages/EditPosts.jsx"
 
@@ -66,7 +66,10 @@ const router = createBrowserRouter([
             </AuthLayout>
         ),
     },
-    
+    {
+      path: "/post/:slug",
+      element: <Post />,
+  },
     ]
   }
 ])
@@ -75,7 +78,9 @@ createRoot(document.getElementById('root')).render(
   <StrictMode>
     <Provider store = {store}>
   
-    <RouterProvider router={router}></RouterProvider>
+    <RouterProvider router={router}>
+  
+    </RouterProvider>
     </Provider>
  
   </StrictMode>,

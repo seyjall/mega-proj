@@ -37,87 +37,82 @@ function Signup () {
     }
 
     return (
-        <div>
-              <div className="flex items-center justify-center">
-                 <div className={`mx-auto w-full max-w-lg bg-gray-100 rounded-xl p-10 border border-black/10`}>
-             
-
-                 <span className="inline-block w-full max-w-[100px]">
-                        <Logo width="100%" />
-                    </span>
-                </div>
-                <h2 className="text-center text-2xl font-bold leading-tight">Sign up to create account</h2>
-                <p className="mt-2 text-center text-base text-black/60">
-                    Already have an account?&nbsp;
-                    <Link
-                        to="/login"
-                        className="font-medium text-primary transition-all duration-200 hover:underline"
-                    >
-                        Sign In
-                    </Link>
-                </p>
-                {error && <p className="text-red-600 mt-8 text-center">{error}</p>}
-
-                <form onSubmit = {handleSubmit(create)}>
-                    <div className="space-y-5">
-                    <Input label = "Name :"
-                    placeholder = "Enter your Name"
-                    {...register("name" , {
-                        required : true 
-                    })}
-                    >
-                    </Input>
-
-                      <Input 
-                                      label = "Email: "
-                                      placeholder = "Enter your email"
-                                      type = "email"
-                                      {...register("email" , {
-                                        required : true , 
-                                        validate : {
-                                            matchPatern : (value) => 
-                                        /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(value) || 
-                                            "email address must be a valid address" , 
-                                        }
-                                      })}></Input>
-                    
-                                      <Input 
-                                      label = "Password" 
-                                       placeholder = "enter your Password" 
-                                       type = "password" 
-                                        {...register("password"  , {
-                                            required : true , 
-                                        
-                                        })}>
-                                      </Input>
-                    
-
-
-                    <Input label = "password" 
-                    placeholder = "eneter password" 
-                    type = "password"  
-                    {...register("password" , {
-                        required : true 
-                    })}>
-                    </Input>
-
-                    <Button type = "submit" className = "w-full">Create Account </Button>
-
-
-
-
-
-
-
-                    </div>
-                   
-
-                </form>
-
-              </div>
+        <div className="min-h-screen flex items-center justify-center bg-gray-50">
+      <div className="mx-auto w-full max-w-lg bg-white rounded-xl p-10 border border-gray-300 shadow-lg">
+        <div className="text-center mb-6">
+          <span className="inline-block w-24 mb-4">
+            <Logo width="100%" />
+          </span>
+          <h2 className="text-3xl font-semibold text-gray-800">Sign up to create account</h2>
+          <p className="mt-2 text-base text-gray-600">
+            Already have an account?&nbsp;
+            <Link
+              to="/login"
+              className="font-medium text-primary transition-all duration-200 hover:underline"
+            >
+              Sign In
+            </Link>
+          </p>
         </div>
-    )
+
+        {error && (
+          <p className="text-red-600 mt-4 text-center text-sm">{error}</p>
+        )}
+
+        <form onSubmit={handleSubmit(create)}>
+          <div className="space-y-5">
+            <Input
+              label="Name"
+              placeholder="Enter your Name"
+              {...register("name", {
+                required: true,
+              })}
+            />
+            <Input
+              label="Email"
+              placeholder="Enter your email"
+              type="email"
+              {...register("email", {
+                required: true,
+                validate: {
+                  matchPattern: (value) =>
+                    /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(value) ||
+                    "Email address must be a valid address",
+                },
+              })}
+            />
+            <Input
+              label="Password"
+              placeholder="Enter your Password"
+              type="password"
+              {...register("password", {
+                required: true,
+              })}
+            />
+            <Input
+              label="Confirm Password"
+              placeholder="Re-enter password"
+              type="password"
+              {...register("confirmPassword", {
+                required: true,
+              })}
+            />
+
+            <Button
+              type="submit"
+              className="w-full bg-primary text-white hover:bg-primary-dark transition duration-300"
+              disabled={loading}
+            >
+              {loading ? "Creating Account..." : "Create Account"}
+            </Button>
+          </div>
+        </form>
+      </div>
+    </div>
+      
+    );
 }
 
 export default Signup 
+
 

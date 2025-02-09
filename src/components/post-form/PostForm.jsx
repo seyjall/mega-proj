@@ -1,12 +1,13 @@
 import React , {useCallback} from "react";
 import { useForm } from "react-hook-form";
-import {Button , Input , Select , RTE} from "../index"
+import {Button , Input , Select , RTE} from ".."
 import appwriteService from "../../appwrite/config"
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 function PostForm ({post}) {
-    const {register , handleSubmit ,watch ,setValue , control, getValues } = useForm(
+    // console.log("postform loaded ")
+    const {register , handleSubmit ,watch ,setValue , control, getValues ,  formState: { errors } } = useForm(
        {defaultValues : {
         title : post ?.title || "" , 
         slug: post?.$id || "",
@@ -18,12 +19,19 @@ function PostForm ({post}) {
     const navigate = useNavigate() 
     const userData = useSelector((state) => state.auth.userData )
     const submit = async (data) => {
-       
-            console.log('Form Submitted:', data)  // Check if data is logged correctly
-          
+    
+            console.log('userDATa  :  ', userData)
+            console.log('userID  :  ', userData.$id)
+
+            const userId = userData?.$id ; 
+
+            if (!userId) {
+                console.error("🚨 ERROR: User ID is missing! Make sure the user is logged in.");
+            
+            }
         if(post) {
            const file =  data.image[0] ?  await appwriteService.uploadFile(data.image[0]) :null
-
+         
 
             if(file){
                 appwriteService.deleteFile(post.featuredImage)
@@ -33,6 +41,8 @@ function PostForm ({post}) {
               post.$id , {
                 ...data , 
                 featuredImage : file ? file.$id : undefined, })
+
+
                 if(dbPost) {
                     navigate(`/post/${dbPost.$id}`)
                 }
@@ -41,7 +51,9 @@ function PostForm ({post}) {
             
         }else{
             const file =  await appwriteService.uploadFile(data.image[0])
-            //improve its if its there then only update 
+            
+            
+            console.log("file : " , file)
 
             if(file){
               const fileId =   file.$id
@@ -49,11 +61,14 @@ function PostForm ({post}) {
 
            const dbPost =    await appwriteService.createPost({
                 ...data , 
-                userId : userData.$id
+                userId  
 
               })
 
-              if(dbPost) {
+              console.log("dbpost : " , dbPost )
+              console.log("dbpost : " , dbPost.$id )
+
+              if(dbPost && dbPost.featuredImage) {
                 navigate(`/post/${dbPost.$id}`)
 
               }
@@ -64,17 +79,16 @@ function PostForm ({post}) {
 
     const slugTransform = useCallback((value) => {
           if(value && typeof value === 'string') { 
-             return value
-            .trim()
-            .toLowerCase()
-            .replace(/[^a-zA-Z\d\s]+/g , "-")
-            .replace(/\s/g , "-")
+             return          value
+                              .trim()
+                              .toLowerCase()
+                             .replace(/[^a-zA-Z\d\s]+/g , "-")
+                               .replace(/\s/g , "-")
          
 
-
-           
+            
           }
-           return " ";
+          return ""
     } , [])
 
 
@@ -92,6 +106,8 @@ function PostForm ({post}) {
    
         }
     } ,[watch ,slugTransform , setValue])
+    // console.log("form state" , watch())
+    // console.log("Validation Errors:", errors);
     return(
         <>
            <form onSubmit={handleSubmit(submit)} className="flex flex-wrap">
@@ -109,6 +125,7 @@ function PostForm ({post}) {
                     {...register("slug", { required: true })}
                     onInput={(e) => {
                         setValue("slug", slugTransform(e.currentTarget.value), { shouldValidate: true });
+                        
                     }}
                 />
                 <RTE label="Content :" name="content" control={control} defaultValue={getValues("content")} />

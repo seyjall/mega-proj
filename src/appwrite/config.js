@@ -23,7 +23,7 @@ async createPost ({title , slug , content , featuredImage , status , userId}){
         return await this.databases.createDocument(
             conf.appwriteDatabaseid , 
             conf.appwriteCollectionid , 
-            slug , 
+            slug ,
             {
                 title , 
                 content , 
@@ -34,7 +34,10 @@ async createPost ({title , slug , content , featuredImage , status , userId}){
         )
 
     }catch(error) {
+       
+       
         console.log(error);
+
         
     }
 }
@@ -94,7 +97,7 @@ async getPosts(queries = [Query.equal("status" , "active")]){
     //when u want to get all the post which are active 
   
     try {
-
+         
         return await this.databases.listDocuments(
             conf.appwriteDatabaseid , 
             conf.appwriteCollectionid , 
@@ -102,7 +105,7 @@ async getPosts(queries = [Query.equal("status" , "active")]){
             //or you can also write the array here 
         )
     } catch (error) {
-        console.log(error);
+        console.log("error from getPosts " , error);
         return false ; 
         
     }
@@ -118,7 +121,7 @@ async uploadFile(file){
         )
         
     } catch (error) {
-        console.log(error);
+        console.log("file no uploaded properly " , error );
         return false ; 
         
     }
@@ -145,6 +148,12 @@ async deleteFile(fileId) {
 
 //since this get file is fast so no need for async 
 getFilePreview(fileId) {
+    if (!fileId) {
+        console.error("🚨 ERROR: fileId is missing in getFilePreview!");
+        return null; // Avoid calling Appwrite if fileId is missing
+    }
+
+
     return this.bucket.getFilePreview(
         conf.appwriteBucketid , 
         fileId 

@@ -22,7 +22,8 @@ export class AuthService {
           const userAccount =   await this.account.create(
              ID.unique() , email , password ,name
             );    
-
+            
+            
             if(userAccount) {
                 //call another method for login  
                 return this.login({email , password});
@@ -42,12 +43,8 @@ export class AuthService {
     async login({ email, password }) {
         try {
 
-            const session = await this.account.getSession('current') ; 
-            if(session) {
-                await this.account.deleteSessions();
-                console.log("now session deleted ");    
-            }
-            console.log("login tried fn call from auth.js", email," and  ", password)
+        
+     
             const userLogin = await this.account.createEmailPasswordSession(email, password);
             console.log("session created " , userLogin)
             return userLogin;

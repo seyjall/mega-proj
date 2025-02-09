@@ -12,7 +12,7 @@ import {useForm} from 'react-hook-form'
 const Login = () => {
     const navigate = useNavigate() ; 
     const dispatch = useDispatch() ; 
-    const {register , handleSubmit} = useForm() //gives these values 
+    const {register , handleSubmit ,  formState: { errors }} = useForm() //gives these values 
     const [error ,setError ]= useState("") 
     const [loading , setloading] = useState(false); 
   
@@ -22,12 +22,13 @@ const Login = () => {
         try{
             setloading(true);
          const session =    await authService.login(data);
-              
+        //  console.log( "form errors in getting session" , errors) ;         
          if(session) {
             const userData = await authService.getCurrentUser()
-          
+            // console.log( "form errors in getting userdata" , errors) ;  
             if(userData)  {
-                dispatch(authLogin ({userData  : user}))
+                dispatch(authLogin ({userData}))
+                // console.log( "form errors in dispatching" , errors) ;  
              navigate("/") }
          }
         }catch(error)
