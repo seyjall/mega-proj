@@ -79,8 +79,11 @@ async deletePost (slug ){
 }
 
 async getPost (slug) {
+    console.log("error in getpost " ,  conf.appwriteDatabaseid , " " , 
+        conf.appwriteCollectionid,  " ",  
+        slug  );
     try{
-        //when only single post u want to get 
+       
         return await this.databases.getDocument(
             conf.appwriteDatabaseid ,
             conf.appwriteCollectionid,  
@@ -92,9 +95,9 @@ async getPost (slug) {
         return false ; 
     }
 }
-//queries is var and inside array u can pass all the queries , syntax 
+
 async getPosts(queries = [Query.equal("status" , "active")]){
-    //when u want to get all the post which are active 
+   
   
     try {
          
@@ -102,7 +105,7 @@ async getPosts(queries = [Query.equal("status" , "active")]){
             conf.appwriteDatabaseid , 
             conf.appwriteCollectionid , 
             queries 
-            //or you can also write the array here 
+         
         )
     } catch (error) {
         console.log("error from getPosts " , error);
@@ -111,7 +114,7 @@ async getPosts(queries = [Query.equal("status" , "active")]){
     }
 }
 
-  // Buckets provide a way to logically group related files together
+ 
 async uploadFile(file){
     try {
         return await this.bucket.createFile(
@@ -146,11 +149,13 @@ async deleteFile(fileId) {
 }
 
 
-//since this get file is fast so no need for async 
+
 getFilePreview(fileId) {
+
+    console.log("fileid from get file preview" , fileId ) ; 
     if (!fileId) {
-        console.error("🚨 ERROR: fileId is missing in getFilePreview!");
-        return null; // Avoid calling Appwrite if fileId is missing
+        console.error(" ERROR: fileId is missing in getFilePreview!");
+        return null; 
     }
 
 
@@ -164,10 +169,7 @@ getFilePreview(fileId) {
 
 
 }
-//u need document id so u will either identify it using slug or else with unique id 
-//in appwrite storage service data is stored in container named as bucket 
-//storage is used when u want to store images , files , audio  , store files etc 
-//and database store user profiles , store structured data 
+
 
 
 
@@ -176,6 +178,4 @@ getFilePreview(fileId) {
 
 const service = new Service() ; 
 export default service 
-//directly Service (class) export karne se achha uska obj export kar dete service 
-//slug : kind of primary key (uniq for identification)
-//and creates in format of human readable url 
+

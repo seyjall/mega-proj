@@ -4,6 +4,7 @@ import appwriteService from "../appwrite/config"
 import { Link } from 'react-router-dom';
 
 const PostCard = ({$id , title , featuredImage  }) => {
+    console.log("PostCard received:", { $id, title, featuredImage });
     return (
         <div className="post-card">
             <Link to = {`/post/${$id}`}>
