@@ -21,9 +21,9 @@ function PostForm ({post}) {
     const submit = async (data) => {
     
             console.log('userDATa  :  ', userData)
-            console.log('userID  :  ', userData.$id)
+            console.log('userID  :  ', userData.userData.$id)
 
-            const userId = userData?.$id ; 
+            const userId = userData?.userData.$id ; 
 
             if (!userId) {
                 console.error("🚨 ERROR: User ID is missing! Make sure the user is logged in.");
