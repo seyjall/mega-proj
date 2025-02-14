@@ -13,7 +13,7 @@ import Signup from './pages/Signup.jsx'
 import Post from './pages/Post.jsx'
 import AllPosts from "./pages/AllPosts.jsx"
 import EditPost from "./pages/EditPosts.jsx"
-import Trips from './components/Trips/trips.jsx'
+import Trips from './components/Trips/Trips.jsx'
 import Tripdetails from './components/Trips/Tripdetails.jsx'
 const router = createBrowserRouter([
   {
