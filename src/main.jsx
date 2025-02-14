@@ -13,7 +13,8 @@ import Signup from './pages/Signup.jsx'
 import Post from './pages/Post.jsx'
 import AllPosts from "./pages/AllPosts.jsx"
 import EditPost from "./pages/EditPosts.jsx"
-
+import Trips from './components/Trips/trips.jsx'
+import Tripdetails from './components/Trips/Tripdetails.jsx'
 const router = createBrowserRouter([
   {
     path :'/' , 
@@ -69,6 +70,21 @@ const router = createBrowserRouter([
     {
       path: "/post/:slug",
       element: <Post />,
+  },
+  {
+    path :"/Join-in" ,
+    element : (
+         <Trips></Trips>
+
+    )
+  
+  },
+  {
+    path :"/Tripdetails/:title/:image" ,
+    element : (
+         <Tripdetails></Tripdetails>
+    )
+  
   },
     ]
   }

@@ -79,9 +79,9 @@ async deletePost (slug ){
 }
 
 async getPost (slug) {
-    console.log("error in getpost " ,  conf.appwriteDatabaseid , " " , 
-        conf.appwriteCollectionid,  " ",  
-        slug  );
+    // console.log("error in getpost " ,  conf.appwriteDatabaseid , " " , 
+    //     conf.appwriteCollectionid,  " ",  
+    //     slug  );
     try{
        
         return await this.databases.getDocument(
@@ -152,7 +152,7 @@ async deleteFile(fileId) {
 
 getFilePreview(fileId) {
 
-    console.log("fileid from get file preview" , fileId ) ; 
+    // console.log("fileid from get file preview" , fileId ) ; 
     if (!fileId) {
         console.error(" ERROR: fileId is missing in getFilePreview!");
         return null; 

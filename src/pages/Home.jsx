@@ -21,8 +21,47 @@ function Home () {
 
   if(posts.length === 0){
     return (
-      <div className="bg-gray-50 min-h-screen flex items-center justify-center py-16">
+      <div className="bg-gray-50 min-h-screen mx-0 flex items-center justify-center py-16">
       <Container>
+      <div className="relative w-full h-screen overflow-hidden">
+ 
+  <video 
+    className="absolute top-0 left-0 w-full h-full object-cover"
+    autoPlay
+    loop
+    muted
+    playsInline
+  >
+    <source src="background.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+  <div className="relative z-10 flex flex-col h-full text-white text-center">
+  
+  <div className="absolute top-10 left-10">
+    <h1 className="font-mogra text-7xl md:text-8xl lg:text-9xl font-bold">
+      Inhale Freedom,
+    </h1>
+  </div>
+
+  
+  <div className="absolute top-60 left-0 w-full px-10 md:top-96 md:px-20 justify-center">
+  <h1 className="font-mogra text-3xl md:text-6xl lg:text-7xl font-bold text-center md:text-left">
+    Exhale Worries
+  </h1>
+</div>
+
+
+  <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2">
+  <p className="text-2xl md:text-3xl lg:text-4xl mt-4 text-center">
+    Your next journey into nature starts here
+  </p>
+</div>
+   
+  </div>
+  
+  
+  
+   </div>
         <div className="flex flex-wrap items-center justify-center">
           <div className="p-6 w-full max-w-lg bg-white rounded-xl shadow-xl text-center">
             <h1 className="text-3xl font-bold text-gray-800 mb-4">
@@ -72,3 +111,4 @@ function Home () {
 }
 
 export default Home; 
+

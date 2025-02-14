@@ -7,6 +7,7 @@ import React from 'react';
 import { useNavigate } from "react-router-dom";
 
 
+
 function Header () {
     const authStatus = useSelector((state) => state.auth.status)
   
@@ -40,6 +41,11 @@ function Header () {
             slug : "/add-post" , 
             active : authStatus
         },
+        {
+            name : "Join In" , 
+            slug : "/Join-in" , 
+            active : !authStatus
+        },
     ]
    
    
@@ -47,7 +53,7 @@ function Header () {
 
     <header className="bg-gray-800 text-white">
     <Container>
-        <nav className="flex items-center justify-between p-4">
+        <nav className="flex items-center justify-between ">
             <div className="flex items-center">
                 <Link to="/">
                     <Logo className="h-8 w-auto" />
@@ -69,7 +75,7 @@ function Header () {
 
                 {authStatus && (
                     <li>
-                        <Logoutbtn className="bg-red-600 hover:bg-red-500 text-white font-bold py-2 px-4 rounded transition duration-200" />
+                        <Logoutbtn className="bg-red-600 hover:bg-red-500 text-black font-bold py-2 px-4 rounded transition duration-200" />
                     </li>
                 )}
             </ul>
