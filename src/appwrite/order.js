@@ -1,12 +1,13 @@
 import { Client, Databases, ID, Permission, Role } from 'node-appwrite';
+import conf from "../conf/conf.js"
 
 class AppwriteService {
   constructor(apiKey) {
     const client = new Client();
     client
-      .setEndpoint(process.env.APPWRITE_FUNCTION_API_ENDPOINT)
-      .setProject(process.env.APPWRITE_FUNCTION_PROJECT_ID)
-      .setKey(apiKey);
+      .setEndpoint(conf.appwriteUrl)
+      .setProject(conf.appwriteProjectid)
+      .setKey(conf.lemonsqueezyapikey);
 
     this.databases = new Databases(client);
 
@@ -14,8 +15,8 @@ class AppwriteService {
   }
 
   async setup() {
-    const databaseId = process.env.APPWRITE_DATABASE_ID ?? 'orders';
-    const collectionId = process.env.APPWRITE_COLLECTION_ID ?? 'orders';
+    const databaseId = conf.appwriteDatabaseid;
+    const collectionId = conf.appwriteBucketid;
 
     if ((await this.doesOrdersDatabaseExist(databaseId)) == true) {
       return;

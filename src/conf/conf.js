@@ -1,3 +1,5 @@
+import { SiLemonsqueezy } from "react-icons/si"
+
 const conf = {
     appwriteUrl : String(import.meta.env.VITE_APPWRITE_URL) , 
   
@@ -5,7 +7,12 @@ const conf = {
     appwriteDatabaseid : String(import.meta.env.VITE_APPWRITE_DATABASE_ID) , 
     appwriteCollectionid : String(import.meta.env.VITE_APPWRITE_COLLECTION_ID) , 
     appwriteBucketid : String(import.meta.env.VITE_APPWRITE_BUCKET_ID) , 
-
+    lemonsqueezyapikey : String(import.meta.env.VITE_LEMON_SQUEEZY_API_KEY),
+    lemonsqueezywebhooksecret : String(import.meta.env.VITE_LEMON_SQUEEZY_WEBHOOK_SECRET) , 
+    lemonssqueezystoreid : String(import.meta.env.VITE_LEMON_SQUEEZY_STORE_ID),
+    lemonsqueezyvariantid : String(import.meta.env.VITE_LEMON_SQUEEZY_VARIANT_ID) , 
+    lemonsqueezycollectionid : String(import.meta.env.VITE_LEMON_SQUEEZY_COLLECTION),
+    lemonssqueezyfxnid : String(import.meta.env.VITE_LEMON_SQUEEZY_FUNCTION),
 }   
  
 export default conf 

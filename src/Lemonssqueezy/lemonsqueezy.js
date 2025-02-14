@@ -3,18 +3,19 @@ import {
   createCheckout,
 } from '@lemonsqueezy/lemonsqueezy.js';
 import crypto from 'crypto';
+import conf from "../conf/conf.js"
 
 class LemonSqueezyService {
   constructor() {
     this.client = lemonSqueezySetup({
-      apiKey: process.env.LEMON_SQUEEZY_API_KEY,
+      apiKey: conf.lemonsqueezyapikey,
     });
   }
 
   async createCheckout(context, userId, userEmail, userName) {
     try {
-      const storeId = process.env.LEMON_SQUEEZY_STORE_ID;
-      const variantId = process.env.LEMON_SQUEEZY_VARIANT_ID;
+      const storeId = conf.lemonssqueezystoreid;
+      const variantId = conf.lemonsqueezyvariant;
       const newCheckout = {
         productOptions: {
           name: 'Test Product',
@@ -46,7 +47,7 @@ class LemonSqueezyService {
 
   validateWebhook(context) {
     try {
-      const secret = process.env.LEMON_SQUEEZY_WEBHOOK_SECRET;
+      const secret = conf.lemonsqueezywebhooksecret;
       const hmac = crypto.createHmac('sha256', secret);
       const digest = Buffer.from(
         hmac.update(context.req.bodyBinary).digest('hex'),

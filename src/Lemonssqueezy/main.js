@@ -1,7 +1,7 @@
-import AppwriteService from './appwrite.js';
+import AppwriteService from '../appwrite/order.js';
 import { getStaticFile, interpolate, throwIfMissing } from './utils.js';
 import LemonSqueezyService from './lemonsqueezy.js';
-
+import conf from "../conf/conf.js"
 export default async (context) => {
   const { req, res, log, error } = context;
 
@@ -12,14 +12,14 @@ export default async (context) => {
     'LEMON_SQUEEZY_VARIANT_ID',
   ]);
 
-  const databaseId = process.env.APPWRITE_DATABASE_ID ?? 'orders';
-  const collectionId = process.env.APPWRITE_COLLECTION_ID ?? 'orders';
+  const databaseId =conf.appwriteDatabaseid;
+  const collectionId = conf.lemonsqueezycollectionid;
 
   if (req.method === 'GET') {
     const html = interpolate(getStaticFile('index.html'), {
-      APPWRITE_FUNCTION_API_ENDPOINT: process.env.APPWRITE_FUNCTION_API_ENDPOINT,
-      APPWRITE_FUNCTION_PROJECT_ID: process.env.APPWRITE_FUNCTION_PROJECT_ID,
-      APPWRITE_FUNCTION_ID: process.env.APPWRITE_FUNCTION_ID,
+      APPWRITE_FUNCTION_API_ENDPOINT: conf.appwriteUrl,
+      APPWRITE_FUNCTION_PROJECT_ID: conf.appwriteProjectid,
+      APPWRITE_FUNCTION_ID: conf.lemonssqueezyfxnid,
       APPWRITE_DATABASE_ID: databaseId,
       APPWRITE_COLLECTION_ID: collectionId,
     });
