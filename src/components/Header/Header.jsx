@@ -41,22 +41,18 @@ function Header () {
             slug : "/add-post" , 
             active : authStatus
         },
-        {
-            name : "Join In" , 
-            slug : "/Join-in" , 
-            active : !authStatus
-        },
+      
     ]
    
    
     return(
 
-    <header className="bg-gray-800 text-white">
+    <header className="bg-grey-800 text-white w-full">
     <Container>
-        <nav className="flex items-center justify-between ">
+        <nav className="flex bg-gray-800 items-center justify-between px-2 ">
             <div className="flex items-center">
                 <Link to="/">
-                    <Logo className="h-8 w-auto" />
+                  <h1 className="justify-center text-3xl py-4">NatureHive</h1>
                 </Link>
             </div>
             <ul className="flex space-x-4">
@@ -65,7 +61,7 @@ function Header () {
                         <li key={item.name}>
                             <button
                                 onClick={() => navigate(item.slug)}
-                                className="text-gray-700 hover:text-gray-500 transition duration-200"
+                                className="text-black hover:text-gray-500 transition duration-200"
                             >
                                 {item.name}
                             </button>

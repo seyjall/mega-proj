@@ -17,6 +17,10 @@ function AllPosts() {
     return(
         <div className="w-full py-8">
       <Container>
+        <div>
+            <h1>Discover Travel Tales: Read All Posts by Fellow Adventurers!</h1>
+           
+        </div>
         <div className="flex  flex-wrap">
             {posts.map((post) => (
                 

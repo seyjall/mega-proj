@@ -15,6 +15,7 @@ import AllPosts from "./pages/AllPosts.jsx"
 import EditPost from "./pages/EditPosts.jsx"
 import Trips from './components/Trips/Trips.jsx'
 import Tripdetails from './components/Trips/Tripdetails.jsx'
+import  './index.css'; 
 const router = createBrowserRouter([
   {
     path :'/' , 
@@ -74,7 +75,10 @@ const router = createBrowserRouter([
   {
     path :"/Join-in" ,
     element : (
-         <Trips></Trips>
+      <AuthLayout>
+          <Trips></Trips>
+      </AuthLayout>
+        
 
     )
   

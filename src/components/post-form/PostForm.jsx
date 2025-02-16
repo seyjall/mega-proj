@@ -66,7 +66,7 @@ function PostForm ({post}) {
               })
 
               console.log("dbpost : " , dbPost )
-              console.log("dbpost : " , dbPost.$id )
+            //   console.log("dbpost : " , dbPost.$id )
 
               if(dbPost && dbPost.featuredImage) {
                 navigate(`/post/${dbPost.$id}`)

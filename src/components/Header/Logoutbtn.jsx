@@ -15,7 +15,7 @@ function Logoutbtn () {
 
  return(
     <>
-    <button
+    <button className="text-black"
     onClick={logoutHandler}>Logout</button>
    
     </>

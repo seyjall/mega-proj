@@ -36,15 +36,15 @@ useEffect(() =>{
   ,[dispatch , authStatus])
 
   return ! loading ? (
-    <div className='min-h-screen flex flex-wrap content-between bg-slate-100'>
+    <div className='w-full min-h-screen flex flex-wrap bg-slate-100'>
    
-      <div className='w-full block'>
+      <div className='w-full '>
          
-         <Header></Header>
-        <main>
-        <Outlet></Outlet>
+         <Header  className='w-full '></Header>
+        <main  className='w-full '>
+        <Outlet ></Outlet>
         </main>
-        <Footer></Footer>
+      <Footer authstatus={authStatus}  className='w-full ' />
 
       </div>
     </div>

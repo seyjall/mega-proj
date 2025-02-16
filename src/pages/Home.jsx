@@ -3,6 +3,12 @@ import { Link } from "react-router-dom";
 import appwriteService from "../appwrite/config"
 import { Container , PostCard } from "../components";
 import { useSelector } from "react-redux";
+import Tripdetails from "../components/Trips/Tripdetails";
+import Trips from "../components/Trips/Trips";
+import {Logo} from "../components";
+import TypingEffect from "../components/Trips/typingeffect";
+import Images from "../components/Trips/imagesize";
+import ImageSlider from "../components/Trips/Imageslider";
 function Home () {
     const[posts , setPosts ] = useState([]) ;
     const { status: authStatus, userData } = useSelector((state) => state.auth); 
@@ -21,7 +27,8 @@ function Home () {
 
   if(posts.length === 0){
     return (
-      <div className="bg-gray-50 min-h-screen mx-0 flex items-center justify-center py-16">
+      <div className="bg-white min-h-screen  items-center justify-center w-full">
+       
       <Container>
       <div className="relative w-full h-screen overflow-hidden">
  
@@ -37,73 +44,51 @@ function Home () {
   </video>
   <div className="relative z-10 flex flex-col h-full text-white text-center">
   
-  <div className="absolute top-10 left-10">
-    <h1 className="font-mogra text-7xl md:text-8xl lg:text-9xl font-bold">
-      Inhale Freedom,
+  <button className = "border-2 border-gray-400 bg-transparent w-1/2 justify-center mx-auto mt-3 rounded-xl text-4xl hover:border-gray-400
+  ">Search for<TypingEffect title={'Trip to Goa with Friends'} className= {'text-white'}></TypingEffect></button>
+  <div className="pt-10 left-10">
+    <h1 className="font-Homenaje text-9xl md:text-8xl lg:text-9xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#04746b] to-[#ff00c6]">
+    Leave the Stress Behind
+    </h1>
+    <h1 className="font-Homenaje text-9xl md:text-8xl lg:text-9xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#04746b] to-[#ff00c6]">
+    Embrace the moment 
     </h1>
   </div>
+  <div className=" py-4 justify-center ">
+        <p className = "text-3xl pt-3 ">your next journey into nature starts here </p>
+        <Link to = "/login">
+        <button className = "bg-transparent hover : border-none">Let's Go</button>
+        </Link>
 
-  
-  <div className="absolute top-60 left-0 w-full px-10 md:top-96 md:px-20 justify-center">
-  <h1 className="font-mogra text-3xl md:text-6xl lg:text-7xl font-bold text-center md:text-left">
-    Exhale Worries
-  </h1>
-</div>
+     
+        
+       
+        </div>
 
+ 
 
-  <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2">
-  <p className="text-2xl md:text-3xl lg:text-4xl mt-4 text-center">
-    Your next journey into nature starts here
-  </p>
-</div>
+ 
    
   </div>
   
   
   
    </div>
-        <div className="flex flex-wrap items-center justify-center">
-          <div className="p-6 w-full max-w-lg bg-white rounded-xl shadow-xl text-center">
-            <h1 className="text-3xl font-bold text-gray-800 mb-4">
-              Login to Read Posts
-            </h1>
-            <p className="text-gray-600 mb-4">
-              Sign in to access your posts and discover new content.
-            </p>
-            <Link
-              to="/login"
-              className="text-lg font-medium text-primary transition-all duration-200 hover:underline"
-            >
-              Go to Login
-            </Link>
-          </div>
-        </div>
+
+
+      
       </Container>
+     
     </div>
     )
   }
   return(
-    <div className="bg-gray-50 min-h-screen py-16">
+    <div className="bg-white min-h-screen py-16">
     <Container>
-      <div className="text-center mb-10">
-        <h1 className="text-4xl font-bold text-gray-800 mb-4">
-          Latest Posts
-        </h1>
-        <p className="text-lg text-gray-600">
-          Check out the most recent articles from our community.
-        </p>
-      </div>
-
-      <div className="flex flex-wrap justify-center gap-6">
-        {posts.map((post) => (
-          <div
-            key={post.$id}
-            className="p-4 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5"
-          >
-            <PostCard {...post} />
-          </div>
-        ))}
-      </div>
+      <h1 className = "text-6xl text-blue-950 pb-2">Click on Image below </h1>
+    <Trips></Trips>
+   
+    
     </Container>
   </div>
 
