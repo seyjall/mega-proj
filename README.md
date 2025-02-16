@@ -3,7 +3,7 @@
 Welcome to **NatureHive** — a platform that offers curated trip packages to nature-filled destinations and allows users to share their personal experiences via articles. NatureHive is designed to foster a community of nature lovers who can explore, book, and share their experiences while enjoying an easy-to-use and modern interface.
 
 **NatureHive** is deployed on [Vercel](https://vercel.com/), ensuring fast and reliable access to the app. You can view the live version of the platform at:
-https://inkspire-psi.vercel.app/
+https://naturehive-psi.vercel.app/
 ## Features
 
 - **User Authentication and Profile Management**: Secure and seamless user sign-up, login, and profile management powered by Appwrite BaaS.
