@@ -12,12 +12,12 @@ import {useForm} from 'react-hook-form'
 const Login = () => {
     const navigate = useNavigate() ; 
     const dispatch = useDispatch() ; 
-    const {register , handleSubmit ,  formState: { errors }} = useForm() //gives these values 
+    const {register , handleSubmit ,  formState: { errors }} = useForm() 
     const [error ,setError ]= useState("") 
     const [loading , setloading] = useState(false); 
   
     const login = async (data) => {
-        setError("") //always clear error first 
+        setError("") 
 
         try{
             setloading(true);

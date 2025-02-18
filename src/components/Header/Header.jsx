@@ -2,7 +2,7 @@ import {Container , Logo ,Logoutbtn}  from "../index";
 
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-//to check user is logged in or not 
+
 import React from 'react'; 
 import { useNavigate } from "react-router-dom";
 

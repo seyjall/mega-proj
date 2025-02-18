@@ -6,7 +6,7 @@ import { logout } from "../../store/authSlice";
 
 function Logoutbtn () {
  const dispatch = useDispatch() ; 
- //for btn ek event handler 
+
  const logoutHandler = () => {
     authService.logout().then(() => {
         dispatch(logout())

@@ -11,6 +11,3 @@ const conf = {
 }   
  
 export default conf 
-//instead of using always import.meta.env and all u start 
-//with conf now and assured is its always gonna be string 
-//conf declared here is an object and u are exporting an object 

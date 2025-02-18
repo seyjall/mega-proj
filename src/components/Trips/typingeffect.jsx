@@ -7,7 +7,7 @@ export default function TypingEffect({title , className}) {
         <div className="w-full">
       <div className= {`flex justify-center items-start ${className} text-black text-2xl font-mono w-full`}>
         <div className="relative w-full">
-          <span className="invisible">{title}</span> {/* Keeps the container width fixed */}
+          <span className="invisible">{title}</span> 
           <div className="absolute top-0 left-0 w-full overflow-hidden">
             <Typewriter
               options={{

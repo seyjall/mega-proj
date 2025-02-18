@@ -44,8 +44,7 @@ function Home () {
   </video>
   <div className="relative z-10 flex flex-col h-full text-white text-center">
   
-  <button className = "border-2 border-gray-400 bg-transparent w-1/2 justify-center mx-auto mt-3 rounded-xl text-4xl hover:border-gray-400
-  ">Search for<TypingEffect title={'Trip to Goa with Friends'} className= {'text-white'}></TypingEffect></button>
+  <button className = "border-2 border-gray-400 bg-transparent w-1/2 justify-center mx-auto mt-3 rounded-xl text-4xl hover:border-gray-400">Search for<TypingEffect title={'Trip to Goa with Friends'} className= {'text-white'}></TypingEffect></button>
   <div className="pt-10 left-10">
     <h1 className="font-Homenaje text-9xl md:text-8xl lg:text-9xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#04746b] to-[#ff00c6]">
     Leave the Stress Behind
